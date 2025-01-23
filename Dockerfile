@@ -23,7 +23,7 @@ RUN wget -O /app/.gonative/cosmovisor/genesis/bin/gonative-v0.1.1.gz https://git
     cd /app/.gonative/cosmovisor/genesis/bin/ && \
     gunzip gonative-v0.1.1.gz && \
     mv gonative-v0.1.1 gonatived
-    chmod +x gonatived && \
+    chmod +x gonatived
 
 RUN go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
 
