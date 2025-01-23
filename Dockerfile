@@ -22,7 +22,7 @@ RUN wget "https://golang.org/dl/go$GO_VER.linux-amd64.tar.gz" && \
 RUN wget -O /app/.gonative/cosmovisor/genesis/bin/gonative-v0.1.1.gz https://github.com/gonative-cc/gonative/releases/download/v0.1.1/gonative-v0.1.1-linux-amd64.gz && \
     cd /app/.gonative/cosmovisor/genesis/bin/ && \
     gunzip gonative-v0.1.1.gz && \
-    mv gonative-v0.1.1 gonatived
+    mv gonative-v0.1.1 gonatived && \
     chmod +x gonatived
 
 RUN go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
