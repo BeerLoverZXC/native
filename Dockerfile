@@ -7,7 +7,7 @@ DAEMON_ALLOW_DOWNLOAD_BINARIES=false \
 DAEMON_RESTART_AFTER_UPGRADE=true \
 MONIKER="Stake Shark" \
 GO_VER="1.23.1" \
-PATH="/usr/local/go/bin:/app/go/bin:${PATH}" \
+PATH="/usr/local/go/bin:/app/go/bin:${PATH}"
 
 WORKDIR /app
 
