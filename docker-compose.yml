@@ -1,0 +1,16 @@
+services:
+  node-native:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: native-node
+    ports:
+      - "26660:26660"
+      - "26656:26656"
+    restart: unless-stopped
+    volumes:
+      - native_volume:/app/.native
+      - ./entrypoint.sh:/app/entrypoint.sh
+
+volumes:
+  native_volume:
