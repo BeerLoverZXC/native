@@ -23,7 +23,7 @@ RUN rm -rf gonative && \
     git clone https://github.com/gonative-cc/gonative && cd gonative && \
     git checkout v0.1.1 && \
     make build && \
-    chmod +x gonatived && \
+    chmod +x gonative && \
     mv /app/gonative/out/gonative /app/.gonative/cosmovisor/genesis/bin/gonative
 
 RUN go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
