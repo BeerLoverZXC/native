@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-ENV DAEMON_NAME=gonatived \
+ENV DAEMON_NAME=gonative \
 HOME=/app \
 DAEMON_HOME=/app/.gonative \
 DAEMON_ALLOW_DOWNLOAD_BINARIES=false \
@@ -19,11 +19,12 @@ RUN wget "https://golang.org/dl/go$GO_VER.linux-amd64.tar.gz" && \
     rm "go$GO_VER.linux-amd64.tar.gz" && \
     mkdir -p /app/go/bin /app/.gonative/cosmovisor/upgrades /app/.gonative/cosmovisor/genesis/bin
 
-RUN wget -O /app/.gonative/cosmovisor/genesis/bin/gonative-v0.1.1.gz https://github.com/gonative-cc/gonative/releases/download/v0.1.1/gonative-v0.1.1-linux-amd64.gz && \
-    cd /app/.gonative/cosmovisor/genesis/bin/ && \
-    gunzip gonative-v0.1.1.gz && \
-    mv gonative-v0.1.1 gonatived && \
-    chmod +x gonatived
+RUN rm -rf gonative && \
+    git clone https://github.com/gonative-cc/gonative && cd gonative && \
+    git checkout v0.1.1 && \
+    make build && \
+    chmod +x gonatived && \
+    mv /app/gonative/out/gonative /app/.gonative/cosmovisor/genesis/bin/gonative
 
 RUN go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
 
