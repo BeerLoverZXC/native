@@ -29,7 +29,7 @@ RUN rm -rf gonative && \
 
 RUN go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
 
-RUN /app/.gonative/cosmovisor/genesis/bin/gonatived init "Stake Shark" --chain-id=native-t1 && \
+RUN /app/.gonative/cosmovisor/genesis/bin/gonative init "Stake Shark" --chain-id=native-t1 && \
 sed -i.bak -e "s%^external_address = \"\"%external_address = \"$(wget -qO- eth0.me):26656\"%" /app/.gonative/config/config.toml && \
 sed -i -e "s/prometheus = false/prometheus = true/" /app/.gonative/config/config.toml && \
 sed -i -e "s/^indexer *=.*/indexer = \"null\"/" /app/.gonative/config/config.toml && \
